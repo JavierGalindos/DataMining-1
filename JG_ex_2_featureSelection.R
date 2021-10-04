@@ -71,7 +71,7 @@ H
 # R function
 library(clustertend)
 H.R = hopkins(x, sample_size)
-H.R
+1 - H.R$H
 
 # Entropy from scrach
 dataset <- x
