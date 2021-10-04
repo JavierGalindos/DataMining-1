@@ -24,7 +24,7 @@ distFun= "Euclidean"
 JG_hopkinsStats = function(dataset, sample_size){
   # sample of the dataset
   ind <- sample(nrow(dataset), size = sample_size) # nrow() not working for one dimesion
-  dataset = dataset[ind,]
+  datasetSampled = dataset[ind,]
   
   distFun= "Euclidean"
   
@@ -50,14 +50,14 @@ JG_hopkinsStats = function(dataset, sample_size){
   }
   
   # Sampled dataset
-  distSample <- matrix(,nrow = nrow(dataset))
-  for (i in seq(along=1:nrow(dataset))){
-    distSample[i] <- distNN(dataset[i,],dataset)
+  distSample <- matrix(,nrow = nrow(datasetSampled))
+  for (i in seq(along=1:nrow(datasetSampled))){
+    distSample[i] <- distNN(datasetSampled[i,],dataset)
   }
   
   # Synthetic dataset
-  distSynth <- matrix(,nrow = nrow(dataset))
-  for (i in seq(along=1:nrow(dataset))){
+  distSynth <- matrix(,nrow = nrow(datasetSampled))
+  for (i in seq(along=1:nrow(datasetSampled))){
     distSynth[i] <- distNN(syntheticData[i,],dataset)
   }
   
