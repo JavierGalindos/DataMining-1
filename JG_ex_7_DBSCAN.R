@@ -5,7 +5,9 @@
 # Source 2: https://towardsdatascience.com/understanding-dbscan-algorithm-and-implementation-from-scratch-c256289479c5
 
 rm(list=ls())
+# Libraries
 library("rstudioapi")  
+library(fpc) #DBSCAN
 set.seed(123)
 
 # Set working directory
@@ -123,7 +125,6 @@ out=predictDBSCAN(x,eps,min_samples)
 
 
 # R function
-library(fpc)
 fpc::dbscan(x, MinPts = min_samples, eps, showplot = TRUE)
 
 # Own solution

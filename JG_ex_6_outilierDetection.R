@@ -5,6 +5,8 @@
 
 rm(list=ls())
 
+# Libraries
+library(DDoutlier) # LOF
 # Set working directory
 setwd(dirname(getActiveDocumentContext()$path)) 
 getwd()  
@@ -71,17 +73,11 @@ maxColorValue <- 50
 palette <- colorRampPalette(c("white","black"))(maxColorValue)
 par(bg = 'white')
 plot(x[,1],x[,2],col=palette[cut(LOF, maxColorValue)],pch=20,main = 'LOF Output')
-library(adegenet)
-colorplot(x,LOF)
 
-lof.renormed <- floor(100*((LOF-min(LOF))/(diff(range(LOF))+1e-2)))
-colors.grayscale <- paste("gray",lof.renormed,sep="")
-plot(x[,1],x[,2], col=colors.grayscale, bg=colors.grayscale,pch=21, main = 'LOF')
 
 LOF=sort(LOF,decreasing = TRUE)
 
 # R implementation
-library(DDoutlier)
 lof <- LOF(x, k = 3)
 
 lof=sort(lof,decreasing = TRUE)

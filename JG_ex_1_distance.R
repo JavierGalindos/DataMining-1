@@ -1,7 +1,11 @@
+# Exercise 1: Disrance funtions
+# Javier Galindos
+
 # Function to compute distances
-# p and dataset are optional for some metric (TODO)
 # this function returns the distace between the element1 and element2
 # according to the metricf
+# Euclidean, Manhattan, Minkowski, Mahalanobis, Cosine and Canberra distances
+# are implemented 
 
 JG_dist<- function(element1,element2,metricf,p,dataset){
   dimensions=length(element1)

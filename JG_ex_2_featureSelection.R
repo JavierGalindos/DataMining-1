@@ -1,8 +1,18 @@
 # Exercise 2: Feature selection
 # Javier Galindos
+
+# Implementation of Hopkins Statistics and Entropy function from scrach
+# The results are validated with native R function
+# The code to perfrom feature selection for k-means and EM is also included
+
 rm(list=ls())
 library("rstudioapi")  
 set.seed(123)
+
+# Libraries
+library(clustertend) # Compute Hopkins using R
+library(rgl) # Plot 3D
+
 # Hopkins statistics from scratch
 
 # Set working directory
@@ -69,12 +79,11 @@ H = JG_hopkinsStats(x,sample_size)
 H 
 
 # R function
-library(clustertend)
 H.R = hopkins(x, sample_size)
+# This function return 1 - H
 1 - H.R$H
 
 # Entropy from scrach
-dataset <- x
 JG_entropy <- function(dataset) {
   n_regions <- 10
   
@@ -122,15 +131,20 @@ JG_entropy <- function(dataset) {
 }
 
 E = JG_entropy(x)
+E
+
 
 ## Feature selection
+
+# Libraries
+library(shotGroups) # k-means
+library(mixtools) # EM
 
 # Load silhouette coefficient function
 source("JG_ex_5_silhouette.R")
 
 # Dataset
 load(file="Data/3gaussiandata.RData")
-library(rgl)
 plot3d(x[,1], x[,2], x[,3], type="p",col=(x[,4]+1)) 
 
 
@@ -153,7 +167,6 @@ Sil_13 = JG_silhouette(x[,c(1,3)],x[,4])
 # 1 & 2 is the best option
 
 # K-means
-library(shotGroups)
 
 # Features 1 & 2
 train = x[,1:2]
@@ -183,7 +196,6 @@ idx <- results$cluster
 Sil_all_kmeans = JG_silhouette(train, idx)
 
 # EM Mixture of gaussians
-library(mixtools)
 
 # Features 1 & 2
 train = x[,1:2]

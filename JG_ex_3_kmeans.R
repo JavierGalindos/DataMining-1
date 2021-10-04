@@ -1,7 +1,7 @@
 # Exercise 3: K-means
 # Javier Galindos
 
-# K-means without libraries
+# K-means from scrach with stopping criteria
 # this file is to implement my own clustering 
 rm(list=ls())
 graphics.off()
@@ -97,8 +97,9 @@ while (step < 100){
   step = step + 1
 }
 
+plot(x[,1],x[,2], main = 'JG Dataset', pch= 20)
 plot(train_set[, 1], train_set[, 2], type='p',col=(train_set[,3]+1),main='K-means output')
 par(new=TRUE)
 points(centroids[,1], centroids[,2], col="black", type='p',pch=20)
 
-plot(x[,1],x[,2], main = 'JG Dataset', pch= 20)
+

@@ -1,3 +1,6 @@
+# Exercise 4: EM 3 dimensional
+# Javier Galindos
+
 # Implementation of EM algorithm (3 dimensional)
 
 # clear everything and load required libraries/codes
@@ -7,6 +10,7 @@ library(mclust) # To compute dmvnorm
 library(car)
 library(scales)
 library("rstudioapi")  
+library(rgl)
 
 set.seed(7)
 
@@ -22,7 +26,6 @@ getwd()
 
 # Load test dataset
 load("Data/3gaussiandata.RData")
-library(rgl)
 plot3d(x[,1], x[,2], x[,3], type="p") 
 
 
@@ -30,7 +33,6 @@ plot3d(x[,1], x[,2], x[,3], type="p")
 # 2D
 plot(x[,1],x[,2], col=scales::alpha(x[,4],0.3), pch=20, xlim=c(-7,10),ylim=c(-10,20)) 
 # 3D
-library(rgl)
 plot3d(x[,1], x[,2], x[,3], type="p") 
 
 # data preparation
